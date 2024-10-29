@@ -11,6 +11,8 @@ export default function App () {
     durationYears: 10
   })
 
+  const isValidInput = userInput.durationYears >= 1
+
   function handleInputChange (key, value) {
     setUserInput((previousValues) => ({
       ...previousValues,
@@ -22,7 +24,7 @@ export default function App () {
     <>
       <Header/>
       <UserInput values={userInput} onChange={handleInputChange}/>
-      <Result input={userInput}/>
+      {isValidInput ? <Result input={userInput}/> : <p className="center">Please enter a duration of at least 1 year</p>}
     </>
   )
 }
